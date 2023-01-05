@@ -1,0 +1,70 @@
+plugins {
+    id 'org.springframework.boot' version '2.6.7'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+    id "org.sonarqube" version "3.3"
+    id 'jacoco'
+}
+
+group = 'a6.ludogames'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+tasks.named('sonarqube').configure {
+    dependsOn test
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'junit:junit:4.13.1'
+    implementation 'junit:junit:4.13.1'
+    compileOnly 'org.projectlombok:lombok'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    runtimeOnly 'org.postgresql:postgresql'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    testImplementation 'org.springframework.security:spring-security-test'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'io.micrometer:micrometer-registry-prometheus'
+}
+
+test {
+    useJUnitPlatform()
+    finalizedBy jacocoTestReport // report is always generated after tests run
+}
+jacocoTestReport {
+        reports {
+        xml.enabled true
+    }
+}
+test.finalizedBy jacocoTestReport
+
+
+sonarqube {
+    properties {
+        property "sonar.projectKey", "AdvProg_reguler-2022_student_kelas-a_2006535016-Romi-Fadhurrohman-Nabil_a06-ludo-games_a6-ludo-games_AYC3jhNhmTzPxwcesHc5"
+        property "sonar.login", "93053e3fe43701a6e6454b11a727082212d15bc3"
+        property "sonar.host.url", "https://sonarqube.cs.ui.ac.id"
+//        property "sonar.tests", "junit"
+        property 'sonar.java.coveragePlugin', 'jacoco'
+        property "sonar.coverage.jacoco.xmlReportPaths", 'build/reports/jacoco/test/jacocoTestReport.xml'
+
+    }
+}
+tasks.named('sonarqube').configure {
+    dependsOn test
+}
+

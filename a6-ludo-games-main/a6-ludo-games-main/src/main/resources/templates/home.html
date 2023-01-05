@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- =====BOX ICONS===== -->
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- ===== CSS ===== -->
+    <link rel="stylesheet" href="css/landing_page.css">
+    <link rel="stylesheet" href="css/about.css">
+
+    <title>Ludo Game</title>
+</head>
+<body>
+<!--===== HEADER =====-->
+<header class="l-header">
+    <nav class="nav bd-grid">
+        <div>
+            <a href="https://ristek.link/A6FinalProject" class="nav__logo">Kelompok A06</a>
+        </div>
+
+        <div class="nav__toggle" id="nav-toggle">
+            <i class='bx bx-menu'></i>
+        </div>
+
+        <div class="nav__menu" id="nav-menu">
+            <div class="nav__close" id="nav-close">
+                <i class='bx bx-x'></i>
+            </div>
+
+            <ul class="nav__list">
+                <li class="nav__item"><a href="#home" class="nav__link active">Home</a></li>
+                <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
+                <li class="nav__item"><a href="/lobby" class="nav__link">Lobby</a></li>
+                <li class="nav__item"><a href="/friendlist" class="nav__link">Friend List</a></li>
+                <li class="nav__item"><a th:href="@{/login}" class="nav__link">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<main class="l-main">
+    <!--===== HOME =====-->
+    <section class="home" id="home">
+        <div class="home__container bd-grid">
+            <div class="home__img">
+                <img src="/images/img1.png" alt="" data-speed="2" class="move">
+                <img src="/images/img4.png" alt="" data-speed="-3.5" class="move pawn">
+                <img src="/images/img6.png" alt="" data-speed="-2" class="move dice">
+            </div>
+
+            <div class="home__data">
+                <h1 class="home__title">Ludo<br> Games</h1>
+                <p class="home__description"> Let's play ludo games <br> and find new friends.</p>
+                <a href="#" class="home__button">Play Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!--===== ABOUT =====-->
+    <section class="about" id="about">
+        <div class="section">
+            <div class="container">
+                <div class="content-section">
+                    <div class="title">
+                        <h1>About</h1>
+                    </div>
+                    <div class="content">
+                        <h3>Ludo Game</h3>
+                        <p>Ludo is a traditional board game, typically of a square shaped board that originated from India.
+                            The name Ludo came from England in 1896. Its first name (before it was called Ludo) was pachisi (in India).
+                            Ludo can be played with a minimum of two players and a maximum of four players.
+                            Each player has 4 lives, and turn-by-turn, every player has to roll the dice once and move their pawn
+                            a number of spots ahead (depending on what number they got from the dice roll).
+                            Whoever gets all four of their pawns around the board first is the winner.
+                            These days, the game is also available on mobile and websites.</p>
+                    </div>
+                </div>
+                <div class="image-section">
+                    <img src="/images/ludo_game.jpg">
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!--===== GSAP =====-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+
+<!--===== MAIN JS =====-->
+<script src="/scripts/landing_page"></script>
+</body>
+
+<!--===== FOOTER  =====-->
+<footer>
+    <p>
+        Created by Kelompok A6 -
+        <a target="_blank" href=https://ristek.link/A6FinalProject>Gitlab Repo</a>.
+    </p>
+</footer>
+</html>
+</html>

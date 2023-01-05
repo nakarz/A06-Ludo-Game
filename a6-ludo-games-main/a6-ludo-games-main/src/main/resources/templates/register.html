@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="form">
+    <!--model attribute we put in register get mapping -->
+    <form method="POST" th:action="@{/api/user/register}" th:object="${user}">
+        <h2>Sign Up</h2>
+        <div class="input-box">
+            <i class="fa fa-user" aria-hidden="true"></i>
+            <input th:field="*{username}" id="username" name="username" type="text" placeholder="Username" required>
+        </div>
+        <div class="input-box">
+            <i class="fa fa-user" aria-hidden="true"></i>
+            <input th:field="*{password}" id="password" name="password" type="password" placeholder="Password" required>
+        </div>
+        <div class="input-box">
+            <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+            <input th:field="*{passwordConfirm}" id="passwordConfirm" name="passwordConfirm" type="password" placeholder="Confirm Password" required>
+
+        </div>
+        <div class="input-box">
+            <button id="submit" type="submit" name="submit">Sign Up</button>
+        </div>
+        <a th:href="@{/login}"> Already have account? Go to Sign In page!</a>
+    </form>
+</div>
+</body>
+</html>

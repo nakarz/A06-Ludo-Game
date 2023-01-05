@@ -1,0 +1,62 @@
+image: gradle:7.4-jdk11-alpine
+
+stages:
+  - build
+  - test
+  - sonarqube-check
+  - deploy
+
+variables:
+  GRADLE_OPTS: '-Dorg.gradle.daemon=false'
+
+before_script:
+  - echo "Semoga hasil code yang di push akan berlajan dengan baik dan lancar."
+  - echo pwd
+  - export GRADLE_USER_HOME=`pwd`/.gradle
+  # Remove caches
+  - rm -f  .gradle/caches/modules-2/modules-2.lock
+  - rm -fr .gradle/caches/*/plugin-resolution/
+
+build:
+  stage: build
+  script:
+    - gradle assemble
+  artifacts:
+    paths:
+      - build/libs/*.jar
+    expire_in: 1 day
+
+test:
+  stage: test
+  allow_failure: false
+  coverage: '/Total.*?([0-9]{1,3})%/'
+  script:
+    - gradle :check --stacktrace
+    - gradle :test --stacktrace
+    - gradle :jacocoTestReport
+    - cat build/reports/jacoco/test/html/index.html
+  artifacts:
+    paths:
+      - build/reports/jacoco/*
+    expire_in: 1 week
+
+deploy:
+  stage: deploy
+  only:
+    - main
+  image: ruby:latest
+  before_script:
+    - gem install dpl
+    - wget -qO- https://cli-assets.heroku.com/install-ubuntu.sh | sh
+  script:
+    - dpl --provider=heroku --app=$HEROKU_APP_NAME --api-key=$HEROKU_API_KEY
+    - export HEROKU_API_KEY=$HEROKU_API_KEY
+    - heroku run --app $HEROKU_APP_NAME migrate
+
+sonarqube-check:
+  stage: sonarqube-check
+  needs:
+    - job: test
+  script:
+    - gradle sonarqube -Dsonar.login=$SONAR_TOKEN
+  allow_failure: true

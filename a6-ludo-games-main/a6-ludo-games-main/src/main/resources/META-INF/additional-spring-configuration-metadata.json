@@ -1,0 +1,24 @@
+{
+  "properties": [
+    {
+      "name": "spring.queries.users-query",
+      "type": "java.lang.String",
+      "description": "Description for spring.queries.users-query."
+    },
+    {
+      "name": "security.basic.enabled",
+      "type": "java.lang.String",
+      "description": "Description for security.basic.enabled."
+    },
+    {
+      "name": "spring.queries.roles-query",
+      "type": "java.lang.String",
+      "description": "Description for spring.queries.roles-query."
+    },
+    {
+      "name": "spring.datasource.testWhileIdle",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.testWhileIdle."
+    }
+  ]
+}
