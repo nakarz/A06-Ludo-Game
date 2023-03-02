@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- =====BOX ICONS===== -->
+  <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+
+  <!-- ===== CSS ===== -->
+  <link rel="stylesheet" href="/static/css/dice_style.css">
+  <link rel="icon" href="/static/images/web_icon.png">
+  <title>Ludo Game</title>
+</head>
+<body>
+<!--===== HEADER =====-->
+  <nav class="nav bd-grid">
+    <div>
+      <a href="https://ristek.link/A6FinalProject" class="nav__logo">Kelompok A06</a>
+    </div>
+
+    <div class="nav__toggle" id="nav-toggle">
+      <i class='bx bx-menu'></i>
+    </div>
+
+    <div class="nav__menu" id="nav-menu">
+      <div class="nav__close" id="nav-close">
+        <i class='bx bx-x'></i>
+      </div>
+      <ul class="nav__list">
+        <li class="nav__item"><a href="#home" class="nav__link active">Home</a></li>
+        <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
+        <li class="nav__item"><a href="#login" class="nav__link">Login</a></li>
+        <li class="nav__item"><a href="#leaderboard" class="nav__link">Leaderboard</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="dice_container">
+    <div class ="player-section">
+      <div id="redCount">0</div>
+      <div id="blueCount">0</div>
+      <div id="yellowCount">0</div>
+      <div id="greenCount">0</div>
+    </div>
+    <div class= "dice-section">
+      <div id="diceSection">
+        <img src="/static/images/dice.png"/>
+      </div>
+      <div class="button-container">
+        <button id="dice">Roll Dice</button>
+      </div>
+    </div>
+  </div>
+  <div class ="message-section">
+    <div id = "chance"></div>
+    <div id = "message"></div>
+  </div>
+  </body>
+</body>
+<!--===== SCRIPTS =====-->
+<script src="/static/js/dice_script.js"></script>
+
+<!--===== GSAP =====-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+
+<!--===== FOOTER =====-->
+<footer>
+  <p>
+    Created by Kelompok A6 -
+    <a target="_blank" href=https://ristek.link/A6FinalProject>Gitlab Repo</a>
+  </p>
+</footer>
+</html>
